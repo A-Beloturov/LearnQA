@@ -24,6 +24,6 @@ param1 = car_creation(cars_parametrs)
 print(param1)
 
 
-#print(car_1.GetSTR())
+print(car_1.GetSTR())
 #print(car_2.GetSTR())
 
