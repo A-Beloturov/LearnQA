@@ -12,12 +12,10 @@ class Car:
 
 cars_parametrs = [{"model": "nissan", "horsepowers": 120}]
 def car_creation(parametrs):
-    model = None
-    horsepowers = None
     for item in parametrs:
         model = item['model']
         horsepowers = item['horsepowers']
-    return model, horsepowers, None
+    return Car(model, horsepowers)
 
 #car_2 = Car("honda", 200)
 param1 = car_creation(cars_parametrs)
