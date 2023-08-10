@@ -1,27 +1,26 @@
 import typing
 
+
 class Car:
     def __init__(self, model, horsepowers):
-        self.model = model
-        self.horsepowers = horsepowers
+        self.model: str = model
+        self.horsepowers: int = horsepowers
 
-    def GetSTR(self):
-        return "Model: " + self.model + " Horsepowers: " + str(self.horsepowers)
+    def __str__(self):
+        return f"Model: {self.model}, Horsepowers: {self.horsepowers}"
 
 
+cars_parameters: list = [{"model": "nissan", "horsepowers": 120}, {"model": "honda", "horsepowers": 150}]
 
-cars_parametrs = [{"model": "nissan", "horsepowers": 120}]
-def car_creation(parametrs):
-    for item in parametrs:
+
+def car_creation(parameters: list) -> list:
+    car_obj: list = []
+    for item in parameters:
         model = item['model']
         horsepowers = item['horsepowers']
-    return Car(model, horsepowers)
-
-#car_2 = Car("honda", 200)
-param1 = car_creation(cars_parametrs)
-print(param1)
+        car_obj.append(Car(model, horsepowers))
+    return car_obj
 
 
-print(car_1.GetSTR())
-#print(car_2.GetSTR())
-
+car_1, car_2 = car_creation(cars_parameters)
+print(car_1, car_2)
