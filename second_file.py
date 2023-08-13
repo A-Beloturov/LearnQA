@@ -1,8 +1,8 @@
 from typing import List, Callable
 
 
-def func_a(*args):
-    print(f'В меня передали: {args}')
+def func_a(x):
+    print(f'В меня передали: {x}')
 
 
 def func_b(*args):
@@ -15,11 +15,7 @@ def func_c(*args):
 
 list_func: list = [func_a, func_b, func_c]
 
-x = "Проверка"
-y = 7
-z = 8
-
-list_arg: list[tuple] = [(x, y, z)]
+list_arg: list[tuple] = [('Proverka', 1, 2), (3, 4, 5), ("Абырвалг", "Мда..."), ("Жил черный волшебник, служивший луне")]
 
 
 # def training_func(first_list, second_list):
@@ -30,10 +26,26 @@ list_arg: list[tuple] = [(x, y, z)]
 #     return first_result
 
 
-def training_func(list_function: list[Callable], list_arguments: list[tuple]):
-    for func in list_function:
-        for arg in list_arguments:
-            func(*arg)
+# def training_func(list_function: list[Callable], list_arguments: list[tuple]):
+#     for func in list_function:
+#         for arg in list_arguments:
+#             try:
+#                 func(*arg)
+#             except TypeError:
+#                 print("invalid argument for function")
+#                 break
+class InvalidSignatureError(Exception):
+    def __init__(self, message="Invalid signature"):
+        self.message = message
+        super().__init__(self.message)
 
+def training_func(list_function: list[Callable], list_arguments: list[tuple]):
+    if len(list_function) != len(list_arguments):
+        raise InvalidSignatureError
+    for func, arg in zip(list_function, list_arguments):
+        try:
+            func(*arg)
+        except TypeError:
+            print('invalid argument for function')
 
 training_func(list_func, list_arg)
