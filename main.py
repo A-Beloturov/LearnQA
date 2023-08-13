@@ -22,7 +22,9 @@
 #     return dict_new
 # print(dictionary(War='Piece', Freedom='Slavery', Ignorance='Strenght'))
 
-def dictionary(**kwargs):
-    dict_new = {key: value for key, value in kwargs.items()}
-    return dict_new
-print(dictionary(War='Piece', Freedom='Slavery', Ignorance='Strenght'))
+# def dictionary(**kwargs):
+#     dict_new = {key: value for key, value in kwargs.items()}
+#     return dict_new
+# print(dictionary(War='Piece', Freedom='Slavery', Ignorance='Strenght'))
+
+
